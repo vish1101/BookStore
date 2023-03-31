@@ -1,0 +1,25 @@
+.centerform{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+}
+.logInForm{
+    background-color: pink;
+    padding: 20px 30px;
+    border: 1px solid black;
+}
+button {
+    padding: 5px 30px;
+    margin-right: 20px;
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+.error{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    color:red;
+}

@@ -1,0 +1,27 @@
+<div class="centerform text-a" *ngIf="showLoginFoem">
+    <div class="container">
+        <div class="col-md-6 offset-md-3">
+                <div class="logInForm">
+                    <form [formGroup]="loginForm" (ngSubmit)="onloginHandler(loginForm)">
+                        <div class="form-group">
+                            <label for="email"><strong>Email</strong></label>
+                            <input type="email" class="form-control" [(ngModel)]="email" formControlName="email" required>
+                            <span class="error" *ngIf="emailControl?.touched && emailControl?.invalid">This Field is Required</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><strong>Password</strong></label>
+                            <input type="password" class="form-control" [(ngModel)]="password" formControlName="password" required>
+                            <span class="error" *ngIf="passwordControl?.touched && passwordControl?.invalid">This Field is Required</span>
+
+                        </div>
+                       <div class="form-group">
+                        <button class="btn btn-dark">
+                            login
+                        </button>
+                        <span *ngIf="iscorrect">Please Enter Vaild Id and password</span>
+                       </div> 
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>

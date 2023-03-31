@@ -1,0 +1,16 @@
+.welcome{
+    background-color: black;
+    color:pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.welcome h2{
+    font-size: 90px;
+}
+.welcome button{
+    margin-top: 39px;
+    background: pink;
+    padding: 5px 70px;
+}

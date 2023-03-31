@@ -1,0 +1,171 @@
+<div class="centerform">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <!-- <div class="text-center mt-4 mb-4"> -->
+            <button class="btn bookBtn" (click)="logout()" style="float: right; margin:10px">Logout</button>
+            <!-- </div> -->
+        </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="col-md-12 col-lg-12">
+      <div class="logInForm">
+        <h2 class="text-center">Add Book</h2>
+        <form [formGroup]="bookForm" (ngSubmit)="addBookFormHandler(bookForm)">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="title"><strong>Title</strong></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="title"
+                  formControlName="title"
+                  required
+                />
+                <span
+                  class="error"
+                  *ngIf="titleControl?.touched && titleControl?.invalid"
+                  >this field is required</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="id"><strong>ID</strong></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="id"
+                  formControlName="id"
+                />
+                <span
+                  class="error"
+                  *ngIf="idControl?.touched && idControl?.invalid"
+                  >this field is required</span
+                >
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="author"><strong>Author</strong></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="author"
+                  formControlName="author"
+                />
+                <span
+                  class="error"
+                  *ngIf="authorControl?.touched && authorControl?.invalid"
+                  >this field is required</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="publishDate"><strong>Publish Date</strong></label>
+                <input
+                  type="date"
+                  class="form-control"
+                  [(ngModel)]="publishDate"
+                  formControlName="publishDate"
+                />
+                <span
+                  class="error"
+                  *ngIf="
+                    publishDateControl?.touched && publishDateControl?.invalid
+                  "
+                  >this field is required</span
+                >
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="price"><strong>Price</strong></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="price"
+                  formControlName="price"
+                />
+                <span
+                  class="error"
+                  *ngIf="priceControl?.touched && priceControl?.invalid"
+                  >this field is required</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-dark" *ngIf="!isUpdate" [disabled]="!bookForm.valid">Add Book</button>
+            <button
+              class="btn btn-dark"
+              *ngIf="isUpdate"
+              (click)="updatedBook()"
+            >
+              update Book
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="searchBook mt-5">
+        <div class="form-group">
+          <div class="col-sm-10 offset-sm-1">
+            <div class="row">
+              <div class="col-md-8 col-lg-9 col-xs-6 col-sm-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search Book"
+                  [(ngModel)]="searchBook"
+                />
+              </div>
+              <div class="col-md-4 col-lg-3 col-sm-6 col-xs-6">
+                <button class="bookBtn">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center mt-4">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12">
+        <div class="books">
+          <div class="row">
+            <div
+              class="col-md-6 col-sm-12 col-lg-4 col-xs-12 mt-4 text-center"
+              *ngFor="let book of bookArray | search : searchBook"
+            >
+              <div class="card">
+                <h6>
+                  <b>{{ book.title }}</b>
+                </h6>
+                <hr />
+                <p><b>Autor</b> : {{ book.author }}</p>
+                <p><b>Price </b>: {{ book.price }}</p>
+                <p><b>Publish Date</b> : {{ book.publishDate }}</p>
+                <p><b>Price </b>:{{ book.price }}/Ru.</p>
+                <div class="">
+                  <button class="bookBtn" (click)="deleteHandler(book)">
+                    Delete
+                  </button>
+                  <button class="bookBtn" (click)="editHandler(book)">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
